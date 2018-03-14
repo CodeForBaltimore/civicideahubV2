@@ -6,13 +6,10 @@ import IdeaForm from './IdeaForm.react';
 class Entries extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-          entries:[]
-        }
     }
 
     sortEntriesByDate() {
-        let date_sorted_entries = this.state.entries.sort((a,b) => {
+        let date_sorted_entries = this.props.entries.sort((a,b) => {
             return new Date(a.createdAt).getTime() -
                 new Date(b.createdAt).getTime()
         }).reverse();
@@ -56,6 +53,16 @@ class Entries extends React.Component {
 
             );
         });
+
+        1
+potential_solution
+:"Porchetta brisket capicola ham turkey short loin pork belly. Prosciutto turducken shoulder meatloaf, beef rump tri-tip spare ribs ham hock picanha fatback t-bone pork belly biltong bresaola. Cupim bacon capicola pancetta shank. Pancetta bacon boudin picanha pork chop frankfurter turkey."
+problem
+:"Andouille short loin tail pork chop tenderloin salami t-bone ground round. Bacon porchetta bresaola ball tip. Strip steak kevin short ribs venison pork loin, salami ground round pork chop drumstick doner swine pastrami. Doner beef ribs chicken cupim filet mignon pork loin tri-tip tenderloin ham hock ground round sausage t-bone. Boudin shank shoulder meatloaf hamburger chicken swine. Turkey brisket shankle tail drumstick."
+title
+:"Bacon ipsum dolor"
+user
+:"Piggy"
 
         return (
 

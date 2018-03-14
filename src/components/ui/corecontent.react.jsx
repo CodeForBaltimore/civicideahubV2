@@ -4,7 +4,7 @@ import Entries from "./Entries.react.jsx"
 const CoreContent = (props) => {
     return (
         <div>
-            <Entries />
+            <Entries entries={props.entries} />
         </div>
     );
 }
