@@ -1,55 +1,70 @@
-import React from 'react';
-import { Button, Form, FormGroup, Col, ControlLabel, Checkbox, FormControl } from 'react-bootstrap';
+import React, {Component} from 'react';
+import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
 
-const submitHandler = (e) => {
-  e.preventDefault()
-}
+class IdeaForm extends Component {
+  constructor() {
+    super();
 
+    this.state = {
+      idea: {
+        title: '',
+        problem: '',
+        solution: ''
+      }
+    };
+  }
 
-const IdeaForm = (props) => {
+  updateIdea = (field, e) => {
+    const { idea } = this.state;
+    this.setState({ idea: { ...idea, [field]: e.target.value } });
+  }
 
-  return (
+  onSubmit = (e) => {
+    e.preventDefault();
+    console.log("this.state.idea", this.state.idea);
+    //handle form processing here....
+  }
 
-    <Form horizontal style={{ padding: 100, paddingTop: 0 }}>
+  render () {
+    const { title, problem, solution } = this.state;
 
-      <FormGroup controlId="formIdeaTitle">
-        <Col componentClass={ControlLabel}>
-
-        </Col>
-        <Col>
-          <FormControl type="text" placeholder="Title"
+    return (
+      <Form horizontal style={{ padding: 100 }}>
+        <div>
+          <h2>Add an idea</h2>
+        </div>
+        <FormGroup controlId="formIdeaTitle">
+          <FormControl
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={value => this.updateIdea("title", value)}
           />
-        </Col>
-      </FormGroup>
-
-      <FormGroup controlId="formProblem">
-
-        <ControlLabel></ControlLabel>
-        <FormControl style={{ height: 100 }} componentClass="textarea" placeholder="Problem"
-        />
-
-      </FormGroup>
-
-
-      <FormGroup controlId="formSolution">
-
-        <ControlLabel></ControlLabel>
-        <FormControl style={{ height: 100 }} componentClass="textarea" placeholder="Solution"
-        />
-
-      </FormGroup>
-
-      <FormGroup>
-        <Col smOffset={1} sm={10}>
-          <Button type="submit" onClick={submitHandler}>
-            submit
+        </FormGroup>
+        <FormGroup controlId="formProblem">
+          <FormControl
+            style={{ height: 100 }}
+            componentClass="textarea"
+            placeholder="Problem"
+            onChange={value => this.updateIdea("problem", value)}
+          />
+        </FormGroup>
+        <FormGroup controlId="formSolution">
+          <FormControl
+            style={{ height: 100 }}
+            componentClass="textarea"
+            placeholder="Solution"
+            onChange={value => this.updateIdea("solution", value)}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Button type="submit" onClick={this.onSubmit}>
+            Submit Idea
           </Button>
-        </Col>
-      </FormGroup>
-    </Form>
-
-  );
+        </FormGroup>
+      </Form>
+    );
+  }
 }
 
 export default IdeaForm;
-
