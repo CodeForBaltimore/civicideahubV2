@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
+import style from '../style/IdeaForm.css';
 
 class IdeaForm extends Component {
   constructor() {
@@ -30,9 +31,7 @@ class IdeaForm extends Component {
 
     return (
       <Form horizontal style={{ padding: 100 }}>
-        <div>
-          <h2>Add an idea</h2>
-        </div>
+        <h2>Add an idea</h2>
         <FormGroup controlId="formIdeaTitle">
           <FormControl
             type="text"
