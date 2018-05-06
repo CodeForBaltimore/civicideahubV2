@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
 import style from '../style/IdeaForm.css';
+import store from "../../store";
+
+import {
+  submitIdea,
+} from '../../actions';
 
 class IdeaForm extends Component {
   constructor() {
@@ -10,7 +15,7 @@ class IdeaForm extends Component {
       idea: {
         title: '',
         problem: '',
-        solution: ''
+        potential_solution: ''
       }
     };
   }
@@ -22,12 +27,17 @@ class IdeaForm extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    console.log("this.state.idea", this.state.idea);
-    //handle form processing here....
+    this.props.addEntry(this.state.idea);
+    this.setState({ idea: {
+        title: '',
+        problem: '',
+        potential_solution: ''
+      }
+    });
   }
 
   render () {
-    const { title, problem, solution } = this.state;
+    const { title, problem, solution } = this.state.idea;
 
     return (
       <Form horizontal style={{ padding: 100 }}>
@@ -45,6 +55,7 @@ class IdeaForm extends Component {
             style={{ height: 100 }}
             componentClass="textarea"
             placeholder="Problem"
+            value={problem}
             onChange={value => this.updateIdea("problem", value)}
           />
         </FormGroup>
@@ -53,6 +64,7 @@ class IdeaForm extends Component {
             style={{ height: 100 }}
             componentClass="textarea"
             placeholder="Solution"
+            value={solution}
             onChange={value => this.updateIdea("solution", value)}
           />
         </FormGroup>

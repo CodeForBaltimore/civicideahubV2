@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Header from './components/ui/header.react'
-import Footer from './components/ui/footer.react'
-import CoreContent from './components/ui/corecontent.react'
+import Header from './components/ui/Header';
+import Footer from './components/ui/Footer';
+import CoreContent from './components/ui/CoreContent';
+import store from './store';
 
 class App extends Component {
 
@@ -20,13 +21,16 @@ class App extends Component {
       if (response.status >= 400) {
         throw new Error("Bad response from server");
       }
-      //console.log(response.json())
       return response.json();
     })
     .then(function(data) {
-      console.log(data)
       that.setState({ entries: data });
     });
+  }
+
+  addEntry = (idea) => {
+    this.setState({ entries: [...this.state.entries, idea] });
+    store.dispatch({type: 'SUBMIT_IDEA', payload: {title: idea.title, problem: idea.problem, potential_solution: idea.solution}})
   }
 
   render() {
@@ -35,7 +39,10 @@ class App extends Component {
         <Header
           userDisplayName={"Todo: Add users"}
         />
-        <CoreContent entries={this.state.entries}/>
+        <CoreContent
+          entries={this.state.entries}
+          addEntry={this.addEntry}
+        />
         <Footer />
       </div>
     );
