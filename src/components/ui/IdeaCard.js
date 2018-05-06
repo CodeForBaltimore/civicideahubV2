@@ -6,7 +6,6 @@ import style from '../style/IdeaCard.css';
 
 const IdeaCard = (props) => {
 	return (
-
 		<div className={style.ideaCard} >
 			<div className={style.header}>
 				<img className={style.image} style={{
