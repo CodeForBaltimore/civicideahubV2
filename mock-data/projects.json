@@ -1,0 +1,66 @@
+{
+  "projects": [
+    {
+      "title":"Quality-focused zero defect approach",
+      "userName":"Missy Cuel",
+      "problem":"Baltimore needs Quality-focused zero defect approach and the world will be a better place",
+      "potential_solution":"curae nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id",
+      "createdAt":"2018/02/26",
+      "likeCount":59,
+      "coderCount":13,
+      "id":1
+   },
+   {
+      "title":"Re-contextualized empowering instruction set",
+      "userName":"Linn Ducroe",
+      "problem":"Baltimore needs Re-contextualized empowering instruction set and the world will be a better place",
+      "potential_solution":"in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam",
+      "createdAt":"2017/08/30",
+      "likeCount":100,
+      "coderCount":50,
+      "image":"",
+      "id":2
+   },
+   {
+      "title":"Monitored web-enabled access",
+      "userName":"Koren Streetley",
+      "problem":"Baltimore needs Monitored web-enabled access and the world will be a better place",
+      "potential_solution":"in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo",
+      "createdAt":"2018/01/08",
+      "likeCount":6,
+      "coderCount":56,
+      "id":3
+   },
+   {
+      "title":"Customizable upward-trending monitoring",
+      "userName":"Onida Shawdforth",
+      "problem":"Baltimore needs Customizable upward-trending monitoring and the world will be a better place",
+      "potential_solution":"odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in",
+      "createdAt":"2018/03/20",
+      "likeCount":74,
+      "coderCount":25,
+      "id":4
+   },
+   {
+      "title":"Down-sized static moratorium",
+      "userName":"Lauraine Eaklee",
+      "problem":"Baltimore needs Down-sized static moratorium and the world will be a better place",
+      "potential_solution":"id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices",
+      "createdAt":"2017/12/16",
+      "likeCount":90,
+      "coderCount":10,
+      "id":5
+   },
+   {
+      "title":"Synergistic attitude-oriented approach",
+      "userName":"Salomone Farrear",
+      "problem":"Baltimore needs Synergistic attitude-oriented approach and the world will be a better place",
+      "potential_solution":"tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu",
+      "createdAt":"2017/08/02",
+      "likeCount":89,
+      "coderCount":50,
+      "id":6
+   }
+
+  ]
+}

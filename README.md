@@ -51,13 +51,7 @@ Project to create a portal for gathering civic hacking ideas.
 Start Mock API server:
 
 ```bash
-./node_modules/.bin/json-server mock-data/projects.json --port 3030
-```
-
-If you have docker you can generate a dev container:
-
-```bash
-docker-compose up
+json-server --watch mock-data/projects.json --port 3030
 ```
 
 The dev server is hosted on http://localhost:3000
@@ -71,3 +65,9 @@ The mock api server is hosted on http://localhost:3030
 - ![#A9A9A9](https://placehold.it/15/A9A9A9/000000?text=+) `#A9A9A9` Carbon (darker)
 - ![#FF3B3F](https://placehold.it/15/FF3B3F/000000?text=+) `#FF3B3F` Watermelon
 - ![#EFEFEF](https://placehold.it/15/EFEFEF/000000?text=+) `#EFEFEF` Neutral
+
+If you have docker you can generate a dev container:
+
+```bash
+docker-compose up
+```
