@@ -13,9 +13,9 @@ const CoreContent = (props) => {
 
   return (
     <main>
-     <switch>
-         <Route path='/' render={(p) => (<Entries {...p} entries={props.entries} />)}/>
-         <Route path='/ideaForm' component={IdeaForm}/>
+     <switch>            
+         <Route path='/' render={(p) => (<Entries entries={props.entries} />)} />
+         <Route path='/ideaForm' render={(p) => (<IdeaForm addEntry={props.addEntry} />)} />        
          <Route path='/about' component={About} />
       </switch>  
     </main>

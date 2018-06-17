@@ -37,7 +37,7 @@ class IdeaForm extends Component {
   }
 
   render () {
-    const { title, problem, solution } = this.state.idea;
+    const { title, problem, potential_solution } = this.state.idea;
 
     return (
       <Form horizontal style={{ padding: 100 }}>
@@ -64,8 +64,8 @@ class IdeaForm extends Component {
             style={{ height: 100 }}
             componentClass="textarea"
             placeholder="Solution"
-            value={solution}
-            onChange={value => this.updateIdea("solution", value)}
+            value={potential_solution}
+            onChange={value => this.updateIdea("potential_solution", value)}
           />
         </FormGroup>
         <FormGroup>
