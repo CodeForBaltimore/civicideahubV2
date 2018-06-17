@@ -3,6 +3,7 @@ import Header from './components/ui/Header';
 import Footer from './components/ui/Footer';
 import CoreContent from './components/ui/CoreContent';
 import store from './store';
+import { BrowserRouter} from 'react-router-dom'
 
 class App extends Component {
 
@@ -35,16 +36,18 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Header
-          userDisplayName={"Todo: Add users"}
-        />
-        <CoreContent
-          entries={this.state.entries}
-          addEntry={this.addEntry}
-        />
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <div>
+          <Header
+            userDisplayName={"Todo: Add users"}
+          />
+          <CoreContent
+            entries={this.state.entries}
+            addEntry={this.addEntry}
+          />
+          <Footer />
+        </div>
+      </BrowserRouter>
     );
   }
 }

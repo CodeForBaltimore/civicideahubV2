@@ -1,6 +1,30 @@
 # civicideahub
 Project to create a portal for gathering civic hacking ideas.
 
+## Installation
+
+1. Install Node and NPM
+2. Install Dependencies
+
+    ```bash
+    npm install
+    ```
+3. Start Dev Server
+
+    ```
+    npm start
+    ```
+
+Start Mock API server:
+
+```bash
+npm install -g json-server
+json-server --watch mock-data/projects.json --port 3030
+```
+
+The dev server is hosted on http://localhost:3000
+
+The mock api server is hosted on http://localhost:3030
 
 ## Overall project goals:
 
@@ -34,29 +58,7 @@ Project to create a portal for gathering civic hacking ideas.
 * Some basic level of administration for the site based on user roles
 
 
-## Installation
 
-1. Install Node and NPM
-2. Install Dependencies
-
-    ```bash
-    npm install
-    ```
-3. Start Dev Server
-
-    ```
-    npm start
-    ```
-
-Start Mock API server:
-
-```bash
-json-server --watch mock-data/projects.json --port 3030
-```
-
-The dev server is hosted on http://localhost:3000
-
-The mock api server is hosted on http://localhost:3030
 
 
 ## Colors
