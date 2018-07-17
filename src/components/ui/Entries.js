@@ -9,9 +9,10 @@ class Entries extends React.Component {
     }
 
     sortEntriesByDate() {
+        let preservedDates = this.props.entries;
+
         let date_sorted_entries = this.props.entries.sort((a,b) => {
-            return new Date(a.createdAt).getTime() -
-                new Date(b.createdAt).getTime()
+            return new Date(a.createdAt)
         }).reverse();
 
         return date_sorted_entries;
@@ -21,7 +22,7 @@ class Entries extends React.Component {
         let convertedDateFormat = items.map((itemValue, index) => {
             let dateObject = new Date(itemValue.createdAt);
             let day = dateObject.getDate();
-            let month = dateObject.getMonth();
+            let month = dateObject.getMonth() + 1; //Iterates starting at 0 so Jan is 0 instead of 1
             let year = dateObject.getFullYear();
 
             itemValue.createdAt = month + '/' + day + '/' + year;

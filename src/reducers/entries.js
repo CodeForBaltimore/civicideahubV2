@@ -9,6 +9,7 @@ const REDUCERS = {
       title: action.title,
       problem: action.problem,
       potential_solution: action.solution
+      ,//TODO: Finish datecreatedAt: Date()
     }]
   }),
 };
