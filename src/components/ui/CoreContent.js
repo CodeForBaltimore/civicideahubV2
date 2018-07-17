@@ -3,9 +3,13 @@ import Entries from "./Entries";
 import IdeaForm from "./IdeaForm";
 import {Route} from 'react-router-dom'
 
+//Fix date on entries 
+//API ideas - Elixir Phoenix   vs.   Express JS
+//Host on Heroku 
+
 const About = () => (
   <div>
-    <h2>About</h2>
+    <h1 style={{ padding: 100 }}>About</h1>
   </div>
 );
 
@@ -13,9 +17,9 @@ const CoreContent = (props) => {
 
   return (
     <main>
-     <switch>
-         <Route path='/' render={(p) => (<Entries {...p} entries={props.entries} />)}/>
-         <Route path='/ideaForm' component={IdeaForm}/>
+     <switch>            
+         <Route exact path='/' render={(p) => (<Entries entries={props.entries} />)} />
+         <Route path='/ideaForm' render={(p) => (<IdeaForm addEntry={props.addEntry} />)} />        
          <Route path='/about' component={About} />
       </switch>  
     </main>
