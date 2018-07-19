@@ -3,9 +3,9 @@ import Entries from "./Entries";
 import IdeaForm from "./IdeaForm";
 import {Route} from 'react-router-dom'
 
-//Fix date on entries 
+//Fix date on entries
 //API ideas - Elixir Phoenix   vs.   Express JS
-//Host on Heroku 
+//Host on Heroku
 
 const About = () => (
   <div>
@@ -17,11 +17,12 @@ const CoreContent = (props) => {
 
   return (
     <main>
-     <switch>            
+     <switch>
          <Route exact path='/' render={(p) => (<Entries entries={props.entries} />)} />
-         <Route path='/ideaForm' render={(p) => (<IdeaForm addEntry={props.addEntry} />)} />        
+         <Route exact path='/ideaForm' render={(p) => (<IdeaForm addEntry={props.addEntry} />)} />
+         <Route exact path='/ideaForm/:id' render={(props) => (<IdeaForm addEntry={props.addEntry} id={props.match.params.id} />)} />
          <Route path='/about' component={About} />
-      </switch>  
+      </switch>
     </main>
   );
 }
