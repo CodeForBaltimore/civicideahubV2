@@ -8,8 +8,8 @@ import {
 } from '../../actions';
 
 class IdeaForm extends Component {
-  constructor() {
-    super();
+    constructor(props) {
+        super(props);
 
     this.state = {
       idea: {
@@ -18,7 +18,11 @@ class IdeaForm extends Component {
         potential_solution: ''
       }
     };
-  }
+    }
+
+    componentDidMount() {
+        console.log(this.props);
+    }
 
   updateIdea = (field, e) => {
     const { idea } = this.state;

@@ -8,35 +8,31 @@ const submitHandler = (e) => {
   console.log("test");
 }
 
+//This span nonsense on line 33 is necessary to work with React Link
+
 const Header = (props) => {
     return (
         <Navbar className={style.header} style={{ backgroundColor: "#CAEBF2" }} fixedTop collapseOnSelect={true}>
             <Navbar.Header>
-                <Navbar.Brand href="/">
-                        <Link to='/'>CIVIC IDEA HUB</Link>
-                    </Navbar.Brand>
+                <Navbar.Brand>
+                    <Link to='/'>CIVIC IDEA HUB</Link>
+                </Navbar.Brand>
                 <Navbar.Toggle />
             </Navbar.Header>
             <Navbar.Collapse>
-                <Navbar.Form pullLeft  >
+                <Navbar.Form pullLeft>
                     <FormGroup >
                         <FormControl type="text" placeholder="Search" />
                     </FormGroup>
-                    {' '}
                     <Button type="submit" onClick={submitHandler}>
                         submit
                     </Button>
                 </Navbar.Form>
-
-                <Nav pullRight>
-                    <NavItem >
+s     
+                <Nav pullRight>                
+                    <NavItem componentClass="span"> 
                         <Link to='ideaForm'>
-                            <span className={style.add}>Add your idea</span>
-                        </Link>
-                    </NavItem>
-                    <NavItem>
-                        <Link to='about'>
-                            <span className={style.add}>About</span>
+                            <h5 className={style.add}>Add your idea</h5>
                         </Link>
                     </NavItem>
                     <NavItem href="#">
@@ -47,7 +43,6 @@ const Header = (props) => {
                           }
                         </NavItem>
                     </Nav>
-
             </Navbar.Collapse>
         </Navbar>
     );
