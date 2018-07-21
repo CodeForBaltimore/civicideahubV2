@@ -13,12 +13,12 @@ const Header = (props) => {
         <Navbar className={style.header} style={{ backgroundColor: "#CAEBF2" }} fixedTop collapseOnSelect={true}>
             <Navbar.Header>
                 <Navbar.Brand href="/">
-                        <Link to='/'>CIVIC IDEA HUB</Link>
-                    </Navbar.Brand>
+                    <Link to='/'>CIVIC IDEA HUB</Link>
+                </Navbar.Brand>
                 <Navbar.Toggle />
             </Navbar.Header>
             <Navbar.Collapse>
-                <Navbar.Form pullLeft  >
+                <Navbar.Form pullLeft>
                     <FormGroup >
                         <FormControl type="text" placeholder="Search" />
                     </FormGroup>
@@ -40,14 +40,12 @@ const Header = (props) => {
                         </Link>
                     </NavItem>
                     <NavItem href="#">
-                        {
-                            props.userId != "" ?
-                            <span onClick={props.logOut}> Log Out {props.userDisplayName} </span>
-                            :<span className={style.login}>Login</span>
-                          }
-                        </NavItem>
-                    </Nav>
-
+                        {props.userId
+                            ? <span onClick={props.logOut}>Log Out {props.userDisplayName}</span>
+                            : <span className={style.login}>Login</span>
+                        }
+                    </NavItem>
+                </Nav>
             </Navbar.Collapse>
         </Navbar>
     );

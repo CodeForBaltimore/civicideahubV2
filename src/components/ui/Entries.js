@@ -39,14 +39,14 @@ class Entries extends React.Component {
         return (
           <Col xs={12} sm={6} md={6} lg={4} key={listValue._id}>
             <IdeaCard
-            ideaTitle={listValue.title}
-            userName={listValue.userName}
-            ideaDescription={listValue.problem}
-            ideaSolution={listValue.potential_solution}
-            likeCount={listValue.likeCount}
-            coderCount={listValue.coderCount}
-            image={listValue.image}
-            createdAt={listValue.createdAt}
+              ideaTitle={listValue.title}
+              userName={listValue.userName}
+              ideaDescription={listValue.problem}
+              ideaSolution={listValue.potential_solution}
+              likeCount={listValue.likeCount}
+              coderCount={listValue.coderCount}
+              image={listValue.image}
+              createdAt={listValue.createdAt}
             />
           </Col>
         );
