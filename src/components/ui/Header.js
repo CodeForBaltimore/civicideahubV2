@@ -14,7 +14,7 @@ const Header = (props) => {
     return (
         <Navbar className={style.header} style={{ backgroundColor: "#CAEBF2" }} fixedTop collapseOnSelect={true}>
             <Navbar.Header>
-                <Navbar.Brand>
+                <Navbar.Brand href="/">
                     <Link to='/'>CIVIC IDEA HUB</Link>
                 </Navbar.Brand>
                 <Navbar.Toggle />

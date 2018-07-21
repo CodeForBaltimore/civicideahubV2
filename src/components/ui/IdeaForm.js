@@ -8,12 +8,12 @@ import {
 } from '../../actions';
 
 class IdeaForm extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
     this.state = {
       idea: {
-        title: '',
+        title: props.id || '',
         problem: '',
         potential_solution: ''
       }
