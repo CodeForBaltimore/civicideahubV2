@@ -90,6 +90,6 @@ IdeaCard.propTypes = {
     ideaID: PropTypes.number
 };
 
-export default IdeaCard;
+//export default IdeaCard;
 
-//export default Dimensions()(IdeaCard);
+export default Dimensions()(IdeaCard);

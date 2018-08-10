@@ -8,11 +8,12 @@ import { BrowserRouter} from 'react-router-dom'
 class App extends Component {
 
   constructor(props) {
-    super(props);
+      super(props);
+
     this.state = {
       entries: []
     };
-}
+  } 
 
   componentWillMount(){
     var that = this;
@@ -25,7 +26,9 @@ class App extends Component {
       return response.json();
     })
     .then(function(data) {
-      that.setState({ entries: data });
+        that.setState({ entries: data });
+        console.log("Whats in store:")
+        console.log(store.getState())
     });
   }
 

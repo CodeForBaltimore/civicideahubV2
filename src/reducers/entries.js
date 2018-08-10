@@ -1,8 +1,10 @@
 import camelCase from 'camel-case';
 
+
+//Why isnt SubmitIdea below
 const REDUCERS = {
   submitIdeaSucceeded: (state, action) => ({
-    ...state,
+    ...state, //spread operator allows for entries to state
     entries: [{
       id: action.id,
       username: action.username,

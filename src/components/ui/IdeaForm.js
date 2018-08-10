@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
 import style from '../style/IdeaForm.css';
 import store from "../../store";
+import BaseForm from "./IdeaForm/BaseForm";
 
 import {
   submitIdea,
@@ -9,18 +10,26 @@ import {
 
 class IdeaForm extends Component {
   constructor(props) {
-    super(props);
+      super(props);
 
-    this.state = {
-      idea: {
-        title: props.id || '',
-        problem: '',
-        potential_solution: ''
-      }
-    };
+      //Todo:  Make get call on Store to get idea if id prop comes through
+      var test = store.getState().entries[1];
+
+      console.log(test);
+        this.state = {
+          idea: {
+            title: props.id || '',
+            problem: '',
+            potential_solution: '',
+            isEdit: props.id != null  
+            }
+        };
     }
 
     componentDidMount() {
+        //This check should probably happen here
+        var test = store.getState().entries;
+
         console.log(this.props);
     }
 
@@ -40,46 +49,12 @@ class IdeaForm extends Component {
     });
   }
 
-  render () {
-    const { title, problem, potential_solution } = this.state.idea;
-
-    return (
-      <Form horizontal style={{ padding: 100 }}>
-        <h2>Add an idea</h2>
-        <FormGroup controlId="formIdeaTitle">
-          <FormControl
-            type="text"
-            placeholder="Title"
-            value={title}
-            onChange={value => this.updateIdea("title", value)}
-          />
-        </FormGroup>
-        <FormGroup controlId="formProblem">
-          <FormControl
-            style={{ height: 100 }}
-            componentClass="textarea"
-            placeholder="Problem"
-            value={problem}
-            onChange={value => this.updateIdea("problem", value)}
-          />
-        </FormGroup>
-        <FormGroup controlId="formSolution">
-          <FormControl
-            style={{ height: 100 }}
-            componentClass="textarea"
-            placeholder="Solution"
-            value={potential_solution}
-            onChange={value => this.updateIdea("potential_solution", value)}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Button type="submit" onClick={this.onSubmit}>
-            Submit Idea
-          </Button>
-        </FormGroup>
-      </Form>
-    );
-  }
+    render() {
+        return (
+            <BaseForm idea={this.state.idea} onSubmit={this.onSubmit} updateIdea={this.updateIdea} />    
+        )
+    }
 }
+
 
 export default IdeaForm;
