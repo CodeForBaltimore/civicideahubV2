@@ -16,11 +16,20 @@ Project to create a portal for gathering civic hacking ideas.
     ```
 
 Start Mock API server:
+    ```bash
+    npm install -g json-server
+    json-server --watch mock-data/projects.json --port 3030
+    ```
 
-```bash
-npm install -g json-server
-json-server --watch mock-data/projects.json --port 3030
-```
+4. Start Back end server:
+    ```
+    node server.js  
+    ```
+
+The back end server is set up on Port 4000 instead of 3000 and was intentionally kept separate from the front end:
+The front end must be incorporated in lib/views.
+
+------------   
 
 The dev server is hosted on http://localhost:3000
 
