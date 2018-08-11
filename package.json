@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "camel-case": "^3.0.0",
+    "hapi": "^17.5.3",
+    "hoek": "^5.0.4",
+    "moment": "^2.22.2",
+    "pug": "^2.0.3",
     "query-string": "^6.0.0",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
@@ -13,7 +17,11 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.1",
     "redux": "^4.0.0",
-    "redux-saga": "^0.16.0"
+    "redux-saga": "^0.16.0",
+    "sequelize": "^4.38.0",
+    "slug": "^0.9.1",
+    "sqlite3": "^4.0.2",
+    "vision": "^5.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
