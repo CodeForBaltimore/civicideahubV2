@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, NavItem, Navbar, Button, FormGroup, FormControl } from 'react-bootstrap';
+import { Nav, NavItem, Navbar, Button, Form, FormGroup, FormControl } from 'react-bootstrap';
 import style from '../style/header.css';
 import { Link } from 'react-router-dom'
 
@@ -19,30 +19,27 @@ const Header = (props) => {
                 </Navbar.Brand>
                 <Navbar.Toggle />
             </Navbar.Header>
+
             <Navbar.Collapse>
                 <Navbar.Form pullLeft>
-                    <FormGroup >
-                        <FormControl type="text" placeholder="Search" />
-                    </FormGroup>
-                    <Button type="submit" onClick={submitHandler}>
-                        submit
-                    </Button>
+                    <div class="input-group">
+                        <FormControl type="text" class="form-control" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" onClick={submitHandler}>Search</button>
+                        </span>
+                    </div>
                 </Navbar.Form>
-s     
-                <Nav pullRight>                
-                    <NavItem componentClass="span"> 
-                        <Link to='ideaForm'>
-                            <h5 className={style.add}>Add your idea</h5>
-                        </Link>
-                    </NavItem>
+
+                <Nav pullRight>
+                    <NavItem><a href="ideaForm">Add your idea</a></NavItem>
                     <NavItem href="#">
                         {
                             props.userId != "" ?
                             <span onClick={props.logOut}> Log Out {props.userDisplayName} </span>
                             :<span className={style.login}>Login</span>
                           }
-                        </NavItem>
-                    </Nav>
+                    </NavItem>
+                </Nav>
             </Navbar.Collapse>
         </Navbar>
     );

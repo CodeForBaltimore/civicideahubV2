@@ -42,7 +42,8 @@
 	width: 100%;
 }
 :local(.image) {
-	position: relative;
+	position: center;
+	max-width: inherit;
 	top: 0px;
 }
 :local(.icon) {
