@@ -1,6 +1,6 @@
 import React from 'react';
 import IdeaCard from './IdeaCard';
-import {Grid, Row, Col} from 'react-bootstrap';
+import {Col} from 'react-bootstrap';
 import IdeaForm from './IdeaForm';
 
 class Entries extends React.Component {
@@ -39,7 +39,7 @@ class Entries extends React.Component {
         return (
           <Col xs={12} sm={6} md={6} lg={4} key={listValue.id}>
                 <IdeaCard
-                    ideaID={listValue.id}  
+                    ideaID={listValue.id}
                     ideaTitle={listValue.title}
                     userName={listValue.userName}
                     ideaDescription={listValue.problem}

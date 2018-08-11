@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
+import {connect} from 'react-redux';
 import style from '../style/IdeaForm.css';
 import store from "../../store";
 import BaseForm from "./IdeaForm/BaseForm";
@@ -10,51 +10,43 @@ import {
 
 class IdeaForm extends Component {
   constructor(props) {
-      super(props);
+    super(props);
 
-      //Todo:  Make get call on Store to get idea if id prop comes through
-      var test = store.getState().entries[1];
-
-      console.log(test);
-        this.state = {
-          idea: {
-            title: props.id || '',
-            problem: '',
-            potential_solution: '',
-            isEdit: props.id != null  
-            }
-        };
-    }
-
-    componentDidMount() {
-        //This check should probably happen here
-        var test = store.getState().entries;
-
-        console.log(this.props);
-    }
-
-  updateIdea = (field, e) => {
-    const { idea } = this.state;
-    this.setState({ idea: { ...idea, [field]: e.target.value } });
-  }
-
-  onSubmit = (e) => {
-    e.preventDefault();
-    this.props.addEntry(this.state.idea);
-    this.setState({ idea: {
+    //Todo:  Make get call on Store to get idea if id prop comes through
+    // console.log('IdeaForm state', store.getState())
+    //
+    // console.log('idea', props.idea);
+    this.state = {
+      idea: props.idea || {
         title: '',
         problem: '',
-        potential_solution: ''
-      }
-    });
+        potential_solution: '',
+        isEdit: props.id != null
+      },
+    };
   }
 
-    render() {
-        return (
-            <BaseForm idea={this.state.idea} onSubmit={this.onSubmit} updateIdea={this.updateIdea} />    
-        )
-    }
+  render() {
+    return (
+      <BaseForm idea={this.props.idea} addEntry={this.props.addEntry} updateEntry={this.props.updateEntry} />
+    )
+  }
 }
 
 
-export default IdeaForm;
+// export default IdeaForm;
+
+const mapStateToProps = (state, ownProps) => {
+  const id = Number(ownProps.id);
+  const idea = state.entries.find(entry => entry.id === id);
+  return {idea};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addEntry: (entry) => dispatch({type: 'SUBMIT_IDEA', payload: entry}),
+    updateEntry: (entry) => dispatch({type: 'UPDATE_IDEA', payload: entry}),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(IdeaForm);

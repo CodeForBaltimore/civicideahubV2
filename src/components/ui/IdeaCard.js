@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import Dimensions from 'react-dimensions'
 import PropTypes from 'prop-types';
 import style from '../style/IdeaCard.css';
@@ -7,10 +7,6 @@ import { Link } from 'react-router-dom'
 
 
 class IdeaCard extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         let props = this.props;
 

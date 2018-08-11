@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import Header from './components/ui/Header';
 import Footer from './components/ui/Footer';
 import CoreContent from './components/ui/CoreContent';
-import store from './store';
 import { BrowserRouter} from 'react-router-dom'
 
 class App extends Component {
@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       entries: []
     };
-  } 
+  }
 
   componentWillMount(){
     var that = this;
@@ -25,19 +25,13 @@ class App extends Component {
       }
       return response.json();
     })
-    .then(function(data) {
-        that.setState({ entries: data });
-        console.log("Whats in store:")
-        console.log(store.getState())
+    .then(function(entries) {
+      that.props.addAllIdeas(entries);
     });
   }
 
-  addEntry = (idea) => {
-    this.setState({ entries: [...this.state.entries, idea] });
-    store.dispatch({type: 'SUBMIT_IDEA', payload: {title: idea.title, problem: idea.problem, potential_solution: idea.solution}})
-  }
-
   render() {
+    // console.log('App store', store.getState())
     return (
       <BrowserRouter>
         <div>
@@ -45,8 +39,7 @@ class App extends Component {
             userDisplayName={"Todo: Add users"}
           />
           <CoreContent
-            entries={this.state.entries}
-            addEntry={this.addEntry}
+            entries={this.props.entries}
           />
           <Footer />
         </div>
@@ -55,4 +48,16 @@ class App extends Component {
   }
 }
 
-export default App;
+// export default App;
+
+const mapStateToProps = (state) => {
+  return {entries: state.entries};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addAllIdeas: (entries) => dispatch({type: 'ADD_ALL_IDEAS', payload: {entries}})
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
