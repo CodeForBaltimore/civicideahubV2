@@ -12,10 +12,6 @@ class IdeaForm extends Component {
   constructor(props) {
     super(props);
 
-    //Todo:  Make get call on Store to get idea if id prop comes through
-    // console.log('IdeaForm state', store.getState())
-    //
-    // console.log('idea', props.idea);
     this.state = {
       idea: props.idea || {
         title: '',
@@ -33,11 +29,11 @@ class IdeaForm extends Component {
   }
 }
 
+//State- Triggered every time theres a change to store and passes new state/store
+//ideaForm - same trigger as above except rerenders IdeaForm with its passed props (only Id is passed into it)
 
-// export default IdeaForm;
-
-const mapStateToProps = (state, ownProps) => {
-  const id = Number(ownProps.id);
+const mapStateToProps = (state, ideaFormProps) => {
+  const id = Number(ideaFormProps.id);
   const idea = state.entries.find(entry => entry.id === id);
   return {idea};
 };
@@ -49,4 +45,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 }
 
+//We pass the the IdeaForm as the second function cause that's the component we want to rerender
 export default connect(mapStateToProps, mapDispatchToProps)(IdeaForm);

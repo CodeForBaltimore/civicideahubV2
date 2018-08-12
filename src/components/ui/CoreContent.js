@@ -20,8 +20,8 @@ const CoreContent = (props) => {
     <main>
      <switch>
          <Route exact path='/' render={(p) => (<Entries entries={props.entries} />)} />
-         <Route exact path='/ideaForm' render={(p) => (<IdeaForm addEntry={props.addEntry} />)} />
-         <Route exact path='/ideaForm/:id' render={(props) => (<IdeaForm addEntry={props.addEntry} id={props.match.params.id} />)} />
+         <Route exact path='/ideaForm' render={(p) => (<IdeaForm />)} />
+         <Route exact path='/ideaForm/:id/' render={(props) => (<IdeaForm id={props.match.params.id} />)} />
          <Route path='/about' component={About} />
       </switch>
     </main>

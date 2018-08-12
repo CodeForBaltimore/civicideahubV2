@@ -23,7 +23,7 @@ class BaseForm extends React.Component {
     this.setState(newState);
   }
 
-  updateIdea = (field, event) => {
+  updateIdeaState = (field, event) => {
     const input = event.target;
     this.setState({[field]: input.value});
   }
@@ -48,7 +48,7 @@ class BaseForm extends React.Component {
   render() {
     const {isEdit} = this.props;
     const { title, problem, potential_solution } = this.state;
-    const updateIdea = this.updateIdea;
+    const updateIdeaState = this.updateIdeaState;
 
     //Todo:  Show/Hide logic on Add vs Edit idea in h2 below
     //Research how
@@ -61,7 +61,7 @@ class BaseForm extends React.Component {
             type="text"
             placeholder="Title"
             value={title || ''}
-            onChange={value => updateIdea("title", value)}
+            onChange={value => updateIdeaState("title", value)}
           />
         </FormGroup>
         <FormGroup controlId="formProblem">
@@ -70,7 +70,7 @@ class BaseForm extends React.Component {
             componentClass="textarea"
             placeholder="Problem"
             value={problem || ''}
-            onChange={value => updateIdea("problem", value)}
+            onChange={value => updateIdeaState("problem", value)}
           />
         </FormGroup>
         <FormGroup controlId="formSolution">
@@ -79,7 +79,7 @@ class BaseForm extends React.Component {
             componentClass="textarea"
             placeholder="Solution"
             value={potential_solution || ''}
-            onChange={value => updateIdea("potential_solution", value)}
+            onChange={value => updateIdeaState("potential_solution", value)}
           />
         </FormGroup>
         <FormGroup>
