@@ -10,8 +10,11 @@ class App extends Component {
   constructor(props) {
       super(props);
 
-    this.state = {
-      entries: []
+      this.state = {
+        entries: [],
+        config:{
+          loading: false
+        }
     };
   }
 
@@ -25,13 +28,20 @@ class App extends Component {
       }
       return response.json();
     })
-    .then(function(entries) {
-      that.props.addAllIdeas(entries);
+    .then(function(entriesRetrieved) {
+      
+      var ideaHubState = {
+            entries: entriesRetrieved,
+            config:{
+              loading: false
+            }
+          };
+
+      that.props.addAllIdeas(ideaHubState);
     });
   }
 
   render() {
-    // console.log('App store', store.getState())
     return (
       <BrowserRouter>
         <div>
@@ -39,7 +49,7 @@ class App extends Component {
             userDisplayName={"Todo: Add users"}
           />
           <CoreContent
-            entries={this.props.entries}
+            entries={this.props.state.entries}
           />
           <Footer />
         </div>
@@ -51,12 +61,12 @@ class App extends Component {
 // export default App;
 
 const mapStateToProps = (state) => {
-  return {entries: state.entries};
+  return {state: state.ideaHubState};
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addAllIdeas: (entries) => dispatch({type: 'ADD_ALL_IDEAS', payload: {entries}})
+    addAllIdeas: (initialSetup) => dispatch({type: 'ADD_ALL_IDEAS', payload: {initialSetup}})
   };
 }
 

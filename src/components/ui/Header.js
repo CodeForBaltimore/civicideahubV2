@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 
 const submitHandler = (e) => {
   e.preventDefault()
-  console.log("test");
 }
 
 //This span nonsense on line 33 is necessary to work with React Link
@@ -27,8 +26,7 @@ const Header = (props) => {
                     <Button type="submit" onClick={submitHandler}>
                         submit
                     </Button>
-                </Navbar.Form>
-s     
+                </Navbar.Form>     
                 <Nav pullRight>                
                     <NavItem componentClass="span"> 
                         <Link to='ideaForm'>

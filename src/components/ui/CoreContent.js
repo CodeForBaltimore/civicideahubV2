@@ -15,7 +15,6 @@ const About = () => (
 );
 
 const CoreContent = (props) => {
-
   return (
     <main>
      <switch>

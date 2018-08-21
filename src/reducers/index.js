@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import entries from './entries';
+import ideaHubState from './entries';
 
 var appReducer = combineReducers({
-  entries,
+  ideaHubState,
 });
 
 var rootReducer = (state, action) => {

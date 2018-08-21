@@ -4,22 +4,21 @@ import style from '../../style/IdeaForm.css';
 
 
 class BaseForm extends React.Component {
-  state = {
+  state = {  //Why aren't we using this.state?
     id: this.props.idea.id,
     title: this.props.idea.title,
     problem: this.props.idea.problem,
     potential_solution: this.props.idea.potential_solution,
   };
 
+  //TODO:  Figure out if this method below is needed.  Doesn't appear necessary.
   componentWillReceiveProps(nextProps) {
-    const newState = {};
-
-    ['title', 'problem', 'potential_solution'].forEach(key => {
+    const newState = {};    
+    ['id', 'title', 'problem', 'potential_solution'].forEach(key => {
       if (nextProps.idea[key] !== this.state[key]) {
         newState[key] = nextProps.idea[key];
       }
     });
-
     this.setState(newState);
   }
 
@@ -30,8 +29,10 @@ class BaseForm extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault();
+
     const idea = this.state;
     const newIdea = idea.id === null;
+
     if (newIdea) {
       this.props.addEntry(idea);
       this.setState({

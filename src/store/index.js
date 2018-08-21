@@ -8,8 +8,8 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   rootReducer,
-  // applyMiddleware(sagaMiddleware)
+   applyMiddleware(sagaMiddleware)
 );
 
-// sagaMiddleware.run(rootSaga);
+ sagaMiddleware.run(rootSaga);
 export default store;
