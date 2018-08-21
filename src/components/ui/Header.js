@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, NavItem, Navbar, Button, FormGroup, FormControl } from 'react-bootstrap';
+import { Nav, NavItem, Navbar, Button, Form, FormGroup, FormControl } from 'react-bootstrap';
 import style from '../style/header.css';
 import { Link } from 'react-router-dom'
 
@@ -18,6 +18,7 @@ const Header = (props) => {
                 </Navbar.Brand>
                 <Navbar.Toggle />
             </Navbar.Header>
+
             <Navbar.Collapse>
                 <Navbar.Form pullLeft>
                     <FormGroup >
@@ -39,8 +40,8 @@ const Header = (props) => {
                             <span onClick={props.logOut}> Log Out {props.userDisplayName} </span>
                             :<span className={style.login}>Login</span>
                           }
-                        </NavItem>
-                    </Nav>
+                    </NavItem>
+                </Nav>
             </Navbar.Collapse>
         </Navbar>
     );
