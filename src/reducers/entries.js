@@ -1,6 +1,9 @@
 import camelCase from 'camel-case';
 
-const REDUCERS = {  //All methods below return the new "state" of the store in one statement
+const REDUCERS = {  
+  //All methods below return the new "state" of the store in one statement
+  //First parameter is state of store and second is what is passed to Store
+  //You don't need 'action' names for this current setup.
   // submitIdea: (entries, payload) => (
   //   //Append new idea to existing array
   //   entries.concat({
@@ -12,21 +15,32 @@ const REDUCERS = {  //All methods below return the new "state" of the store in o
   //     //TODO: Finish datecreatedAt: Date()
   //   })
   // ),
-  submitIdea: (submitedIdeaHubState, payload) => {
+  toggleProcessStatus: (submitedIdeaHubState, payload) =>{
+    submitedIdeaHubState.config.loading = payload;
+    return submitedIdeaHubState;
+  },
 
+  startIdeasubmission: (submitedIdeaHubState, payload) => {
+    console.log(payload, "Payload");
+    console.log(submitedIdeaHubState, "submitedIdeaHubState");
+
+    return payload.currentSetup;
+  },
+  addIdea: (submitedIdeaHubState, payload) => {
     var newEntries = submitedIdeaHubState.entries.concat({
       id: submitedIdeaHubState.entries.sort((entryA, entryB) => entryA.id < entryB.id)[0].id + 1,
       username: payload.username,
       title: payload.title,
       problem: payload.problem,
-      potential_solution: payload.solution,
+      potential_solution: payload.potential_solution,
+      createdAt: new Date(),
       //TODO: Finish datecreatedAt: Date()
     })
 
     var newState = {...submitedIdeaHubState,
       entries: newEntries
     };
-
+    console.log(newState);
     return newState;
   },
 
@@ -35,9 +49,10 @@ const REDUCERS = {  //All methods below return the new "state" of the store in o
   },
 
   updateIdea: (updatedIdeaAndHubState, payload) => {
-
     const index = updatedIdeaAndHubState.entries.findIndex(entry => entry.id === payload.id);
-    const newEntries = updatedIdeaAndHubState.entries.slice(0, index).concat(payload).concat(updatedIdeaAndHubState.entries.slice(index + 1));
+    const newEntries = updatedIdeaAndHubState.entries.slice(0, index)
+                                                      .concat(payload)
+                                                      .concat(updatedIdeaAndHubState.entries.slice(index + 1));
 
     var newState = {...updatedIdeaAndHubState,
       entries: newEntries

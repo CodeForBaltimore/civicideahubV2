@@ -23,7 +23,10 @@ class IdeaForm extends Component {
 
   render() {
     return (
-      <FormUI idea={this.props.idea} addEntry={this.props.addEntry} updateEntry={this.props.updateEntry} />
+      <FormUI idea={this.props.idea} addEntry={this.props.addEntry} 
+                                    startIdeasubmission={this.props.startIdeasubmission} 
+                                    updateEntry={this.props.updateEntry} 
+      />
     )
   }
 }
@@ -40,6 +43,7 @@ const mapStateToProps = (state, ideaFormProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    startIdeasubmission : (entry) => dispatch({type: 'START_IDEA_SUBMISSION'}),
     addEntry: (entry) => dispatch({type: 'SUBMIT_IDEA', payload: entry}),
     updateEntry: (entry) => dispatch({type: 'UPDATE_IDEA', payload: entry}),
   };
