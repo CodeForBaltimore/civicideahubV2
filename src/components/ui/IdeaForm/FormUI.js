@@ -2,23 +2,26 @@ import React from 'react';
 import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
 import style from '../../style/IdeaForm.css';
 
-
 class BaseForm extends React.Component {
   state = {  //Why aren't we using this.state?
     id: this.props.idea.id,
     title: this.props.idea.title,
     problem: this.props.idea.problem,
     potential_solution: this.props.idea.potential_solution,
+    loadingStatus: this.props.loadingStatus
   };
 
   //TODO:  Figure out if this method below is needed.  Doesn't appear necessary.
   componentWillReceiveProps(nextProps) {
-    const newState = {};    
-    ['id', 'title', 'problem', 'potential_solution'].forEach(key => {
+    const newState = {}; 
+    nextProps.idea.loadingStatus = nextProps.loadingStatus;
+
+    ['id', 'title', 'problem', 'potential_solution', 'loadingStatus'].forEach(key => {
       if (nextProps.idea[key] !== this.state[key]) {
         newState[key] = nextProps.idea[key];
       }
     });
+
     this.setState(newState);
   }
 
@@ -48,11 +51,11 @@ class BaseForm extends React.Component {
 
   render() {
     const {isEdit} = this.props;
-    const { title, problem, potential_solution } = this.state;
+    const { title, problem, potential_solution, loadingStatus } = this.state;
     const updateIdeaState = this.updateIdeaState;
-
+    const loadingDisplay = loadingStatus ? "Submitting..." : "";
+    console.log(loadingDisplay, "FORMui");
     //Todo:  Show/Hide logic on Add vs Edit idea in h2 below
-    //Research how
 
     return (
       <Form onSubmit={this.onSubmit} horizontal style={{ padding: 100 }}>
@@ -87,6 +90,7 @@ class BaseForm extends React.Component {
           <Button type="submit">
             Submit Idea
           </Button>
+            {loadingDisplay}
         </FormGroup>
       </Form>
     );

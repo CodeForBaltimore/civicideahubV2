@@ -7,15 +7,20 @@ import {
   toggleProcessStatus,
   addIdea
 } from '../actions'; 
-
+//meetings to get government opinion
+//
 function* submitIdea({payload}) {
   try {
     // const token = yield select(getToken);
-    yield put (toggleProcessStatus(true)); //Todo: add spinner
+    yield put(toggleProcessStatus(true)); //Todo: add spinner
 
     yield put(addIdea(payload));
 
-    yield put (toggleProcessStatus(false));
+    //Artificial delay simply for mocking db roudtrip process
+    const delay = (ms) => new Promise(res => setTimeout(res, ms))
+    yield delay(1000);
+
+    yield put(toggleProcessStatus(false));
 
     // yield put(submitIdeaSucceeded({
     //   id: 44, //Todo: Databse needs to create this

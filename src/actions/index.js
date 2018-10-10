@@ -27,8 +27,6 @@ export function toggleProcessStatus (statusBool) {
     payload: statusBool 
   };
 };
-
-
 // var ideaHubState = {
 //   entries: entriesRetrieved,
 //   config:{

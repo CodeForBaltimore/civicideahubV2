@@ -4,7 +4,7 @@ import style from '../style/IdeaForm.css';
 import store from "../../store";
 import FormUI from "./IdeaForm/FormUI";
 
-import {
+import {//Is this doing anything?
   submitIdea,
 } from '../../actions';
 
@@ -12,6 +12,7 @@ class IdeaForm extends Component {
   constructor(props) {
     super(props);
     this.state = {  //Passed down to FormUI
+      isLoading: props.isLoading,
       idea: props.idea || {
         title: '',
         problem: '',
@@ -22,10 +23,14 @@ class IdeaForm extends Component {
   }
 
   render() {
+    console.log(this.props.isLoading, "in render ideaform");
+
     return (
-      <FormUI idea={this.props.idea} addEntry={this.props.addEntry} 
-                                    startIdeasubmission={this.props.startIdeasubmission} 
-                                    updateEntry={this.props.updateEntry} 
+      <FormUI idea={this.props.idea} 
+                        loadingStatus={this.props.isLoading}
+                        addEntry={this.props.addEntry} 
+                        startIdeasubmission={this.props.startIdeasubmission} 
+                        updateEntry={this.props.updateEntry} 
       />
     )
   }
@@ -35,10 +40,12 @@ class IdeaForm extends Component {
 //State- Triggered every time theres a change to store and passes new state/store
 //ideaForm - same trigger as above except rerenders IdeaForm with its passed props (only Id is passed into it)
 const mapStateToProps = (state, ideaFormProps) => {
+
+  const isLoading = state.ideaHubState.config.loading;
   const id = Number(ideaFormProps.id);
   const idea = state.ideaHubState.entries.find(entry => entry.id === id);
 
-  return {idea};
+  return {idea, isLoading};
 };
 
 const mapDispatchToProps = (dispatch) => {

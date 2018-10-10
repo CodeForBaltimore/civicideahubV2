@@ -17,13 +17,18 @@ const REDUCERS = {
   // ),
   toggleProcessStatus: (submitedIdeaHubState, payload) =>{
     submitedIdeaHubState.config.loading = payload;
-    return submitedIdeaHubState;
+    console.log(submitedIdeaHubState, "toggle ideas");
+    var newState = {
+      entries: submitedIdeaHubState.entries,
+      config: submitedIdeaHubState.config
+    }
+
+    return newState;
   },
 
   startIdeasubmission: (submitedIdeaHubState, payload) => {
     console.log(payload, "Payload");
     console.log(submitedIdeaHubState, "submitedIdeaHubState");
-
     return payload.currentSetup;
   },
   addIdea: (submitedIdeaHubState, payload) => {
@@ -34,13 +39,12 @@ const REDUCERS = {
       problem: payload.problem,
       potential_solution: payload.potential_solution,
       createdAt: new Date(),
-      //TODO: Finish datecreatedAt: Date()
     })
 
     var newState = {...submitedIdeaHubState,
       entries: newEntries
     };
-    console.log(newState);
+    
     return newState;
   },
 
