@@ -9,23 +9,13 @@ import {
 } from '../../actions';
 
 class IdeaForm extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {  //Passed down to FormUI
-  //     idea: props.idea || {
-  //       title: '',
-  //       problem: '',
-  //       potential_solution: '',
-  //       isEdit: props.id != null  //Unecessarily recreated in FormUI but should be passed in from this
-  //     },
-  //   };
-  // }
 
   render() {
-    console.log(this.props, 'ideaForm.js')
+
     return (
       <FormUI idea={this.props.idea} 
-                        loadingConfig={this.props.loadingConfig.loading}
+                        loadingStatus={this.props.isLoading}
+                        ideaSubmitMessage = {this.props.ideaSubmissionMessage}
                         addEntry={this.props.addEntry} 
                         startIdeasubmission={this.props.startIdeasubmission} 
                         updateEntry={this.props.updateEntry} 
@@ -39,11 +29,13 @@ class IdeaForm extends Component {
 //ideaForm - same trigger as above except rerenders IdeaForm with its passed props (only Id is passed into it)
 const mapStateToProps = (state, ideaFormProps) => {
 
-  const loadingConfig = state.ideaHubState.config;
+  //TODO: Was not able to successfully pass config object and have rerender work properly.
+  const isLoading = state.ideaHubState.config.loading;
+  const ideaSubmissionMessage = state.ideaHubState.config.ideaSubmitMessage;
   const id = Number(ideaFormProps.id);
   const idea = state.ideaHubState.entries.find(entry => entry.id === id);
 
-  return {idea, loadingConfig};
+  return {idea, isLoading, ideaSubmissionMessage};
 };
 
 const mapDispatchToProps = (dispatch) => {

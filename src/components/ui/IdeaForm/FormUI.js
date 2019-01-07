@@ -1,25 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
 import style from '../../style/IdeaForm.css';
 
-class BaseForm extends React.Component {
+class BaseForm extends Component {
   state = {  //Why aren't we using this.state?
     id: this.props.idea.id,
     title: this.props.idea.title,
     problem: this.props.idea.problem,
     potential_solution: this.props.idea.potential_solution,
-    loadingStatus: this.props.loadingConfig,
-    //submissionMessage: this.props.loadingConfig.ideaSubmitMessage 
+    loadingStatus: this.props.loadingStatus,
+    submissionMessage: this.props.ideaSubmitMessage 
   };
 
-  //TODO:  Figure out if this method below is needed.  Doesn't appear necessary.
-  //Copy typical constructor super prop structure and see what happens
   componentWillReceiveProps(nextProps) {
-    console.log(this.props, "this props");
     const newState = {}; 
-    nextProps.idea.loadingStatus = nextProps.loadingConfig.loading;
+    nextProps.idea.loadingStatus = nextProps.loadingStatus;
+    nextProps.idea.submissionMessage = nextProps.ideaSubmitMessage;
 
-    ['id', 'title', 'problem', 'potential_solution', 'loadingStatus'].forEach(key => {
+    ['id', 'title', 'problem', 'potential_solution', 'loadingStatus', 'submissionMessage'].forEach(key => {
       if (nextProps.idea[key] !== this.state[key]) {
         newState[key] = nextProps.idea[key];
       }
@@ -57,7 +55,6 @@ class BaseForm extends React.Component {
     const { title, problem, potential_solution, loadingStatus, submissionMessage } = this.state;
     const updateIdeaState = this.updateIdeaState;
     const loadingDisplay = loadingStatus ? "Submitting..." : "";
-    //console.log(loadingStatus)
     //Todo:  Show/Hide logic on Add vs Edit idea in h2 below
 
     return (

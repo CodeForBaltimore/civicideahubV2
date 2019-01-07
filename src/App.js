@@ -34,7 +34,8 @@ class App extends Component {
       var ideaHubState = {
             entries: entriesRetrieved,
             config:{
-              loading: false
+              loading: false,
+              ideaSubmitMessage: '' 
             }
           };
 
