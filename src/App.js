@@ -13,7 +13,8 @@ class App extends Component {
       this.state = {
         entries: [],
         config:{
-          loading: false
+          loading: false,
+          ideaSubmitMessage: '' 
         }
     };
   }

@@ -4,20 +4,11 @@ const REDUCERS = {
   //All methods below return the new "state" of the store in one statement
   //First parameter is state of store and second is what is passed to Store
   //You don't need 'action' names for this current setup.
-  // submitIdea: (entries, payload) => (
-  //   //Append new idea to existing array
-  //   entries.concat({
-  //     id: entries.sort((entryA, entryB) => entryA.id < entryB.id)[0].id + 1,
-  //     username: payload.username,
-  //     title: payload.title,
-  //     problem: payload.problem,
-  //     potential_solution: payload.solution,
-  //     //TODO: Finish datecreatedAt: Date()
-  //   })
-  // ),
+ 
   toggleProcessStatus: (submitedIdeaHubState, payload) =>{
     submitedIdeaHubState.config.loading = payload;
-    console.log(submitedIdeaHubState, "toggle ideas");
+    
+    //Wont rerender formUI if you return submitedIdeaHubState
     var newState = {
       entries: submitedIdeaHubState.entries,
       config: submitedIdeaHubState.config
@@ -26,11 +17,17 @@ const REDUCERS = {
     return newState;
   },
 
-  startIdeasubmission: (submitedIdeaHubState, payload) => {
-    console.log(payload, "Payload");
-    console.log(submitedIdeaHubState, "submitedIdeaHubState");
-    return payload.currentSetup;
-  },
+  submitIdeaSucceeded: (submitedIdeaHubState, payload) => {
+      submitedIdeaHubState.config.ideaSubmitMessage = payload;
+    
+      var newState = {
+        entries: submitedIdeaHubState.entries,
+        config: submitedIdeaHubState.config
+      }
+  
+      return newState;
+   },
+  
   addIdea: (submitedIdeaHubState, payload) => {
     var newEntries = submitedIdeaHubState.entries.concat({
       id: submitedIdeaHubState.entries.sort((entryA, entryB) => entryA.id < entryB.id)[0].id + 1,
@@ -66,6 +63,7 @@ const REDUCERS = {
   },
 };
 
+//Initially populated in App.js
 const ideaHubState = {
   entries: [],
   config:{}

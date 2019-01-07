@@ -4,13 +4,15 @@ export const SUBMIT_IDEA_FAILED = 'SUBMIT_IDEA_FAILED';
 export const TOGGLE_PROCESS_STATUS = 'TOGGLE_PROCESS_STATUS';
 export const ADD_IDEA = 'ADD_IDEA'
 
+//Submits idea for processing
 export function submitIdea(idea) {
   return {
     type: SUBMIT_IDEA,
-    idea,
+    payload: idea
   };
 }
 
+//Actually adds idea
 export function addIdea (idea){
   return { type: ADD_IDEA, payload: {
       username: "TODO: create username",
@@ -27,16 +29,10 @@ export function toggleProcessStatus (statusBool) {
     payload: statusBool 
   };
 };
-// var ideaHubState = {
-//   entries: entriesRetrieved,
-//   config:{
-//     loading: false
-//   }
-// };
 
-export function submitIdeaSucceeded(idea) {
+export function submitIdeaSucceeded(successMessage) {
   return {
     type: SUBMIT_IDEA_SUCCEEDED,
-    idea,
+    payload: successMessage,
   };
 }

@@ -8,13 +8,16 @@ class BaseForm extends React.Component {
     title: this.props.idea.title,
     problem: this.props.idea.problem,
     potential_solution: this.props.idea.potential_solution,
-    loadingStatus: this.props.loadingStatus
+    loadingStatus: this.props.loadingConfig,
+    //submissionMessage: this.props.loadingConfig.ideaSubmitMessage 
   };
 
   //TODO:  Figure out if this method below is needed.  Doesn't appear necessary.
+  //Copy typical constructor super prop structure and see what happens
   componentWillReceiveProps(nextProps) {
+    console.log(this.props, "this props");
     const newState = {}; 
-    nextProps.idea.loadingStatus = nextProps.loadingStatus;
+    nextProps.idea.loadingStatus = nextProps.loadingConfig.loading;
 
     ['id', 'title', 'problem', 'potential_solution', 'loadingStatus'].forEach(key => {
       if (nextProps.idea[key] !== this.state[key]) {
@@ -51,10 +54,10 @@ class BaseForm extends React.Component {
 
   render() {
     const {isEdit} = this.props;
-    const { title, problem, potential_solution, loadingStatus } = this.state;
+    const { title, problem, potential_solution, loadingStatus, submissionMessage } = this.state;
     const updateIdeaState = this.updateIdeaState;
     const loadingDisplay = loadingStatus ? "Submitting..." : "";
-    console.log(loadingDisplay, "FORMui");
+    //console.log(loadingStatus)
     //Todo:  Show/Hide logic on Add vs Edit idea in h2 below
 
     return (
@@ -90,7 +93,7 @@ class BaseForm extends React.Component {
           <Button type="submit">
             Submit Idea
           </Button>
-            {loadingDisplay}
+            {loadingDisplay} {submissionMessage}
         </FormGroup>
       </Form>
     );

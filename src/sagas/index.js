@@ -7,8 +7,8 @@ import {
   toggleProcessStatus,
   addIdea
 } from '../actions'; 
-//meetings to get government opinion
-//
+
+
 function* submitIdea({payload}) {
   try {
     // const token = yield select(getToken);
@@ -22,21 +22,14 @@ function* submitIdea({payload}) {
 
     yield put(toggleProcessStatus(false));
 
-    // yield put(submitIdeaSucceeded({
-    //   id: 44, //Todo: Databse needs to create this
-    //  // title: title,
-    //  // problem: problem,
-    //  // potential_solution: solution,
-    //   user: 'username of submitted user'
-    // }));
+    yield put(submitIdeaSucceeded("Submitted Successfully!"));
 
   } catch (e) {
     // handle failure
   }
 }
 
-//function* processIdea()
-
+//Create global listener for any component using methods below
 export default function* rootSaga() {
   yield takeEvery(SUBMIT_IDEA, submitIdea);
 }
